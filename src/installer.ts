@@ -69,7 +69,7 @@ async function checkCompatibility(): Promise<void> {
   }
 
   const arch = os.arch()
-  const supportedArchs = ['x64']
+  const supportedArchs = ['x64', 'arm64']
   if (!supportedArchs.includes(arch)) {
     throw new Error(`Unsupported arch '${arch}'`)
   }
@@ -100,6 +100,7 @@ function getArchString(version: string): string {
   const arch = os.arch()
   switch (arch) {
     case 'x64':
+    case 'arm64':
       return '-x86_64'
     default:
       throw new Error()
